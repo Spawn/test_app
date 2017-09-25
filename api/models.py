@@ -1,5 +1,6 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine, Column, Integer, String, Numeric
+from sqlalchemy import create_engine, Column, Integer, String
+from settings import SQLITE_ENGINE
 
 Base = declarative_base()
 
@@ -7,23 +8,24 @@ Base = declarative_base()
 class Contact(Base):
     __tablename__ = 'contacts'
     id = Column(Integer, primary_key=True)
-    first_name = Column(String(50))
-    last_name = Column(String(50))
-    email = Column(String())
+    first_name = Column(String(50), nullable=False)
+    last_name = Column(String(50), nullable=False)
+    email = Column(String(), nullable=False)
     phone_number = Column(Integer)
     company = Column(String(50))
     address = Column(String(50))
-    street_address = Column(String(50))
+    street_address = Column(String(50), nullable=False)
     unit_number = Column(String(50))
-    city = Column(String(50))
-    state = Column(String(50))
-    zip_code = Column(String(50))
-    country = Column(String(50))
+    city = Column(String(50), nullable=False)
+    state = Column(String(50), nullable=False)
+    zip_code = Column(String(50), nullable=False)
+    country = Column(String(50), default="US")
     notes = Column(String(50))
 
     def as_dict(self):
         return {c.name: getattr(self, c.name)
                 for c in self.__table__.columns}
 
-engine = create_engine('sqlite:///test_app.db')
-Base.metadata.create_all(engine)
+if __name__ == "__main__":
+    engine = create_engine(SQLITE_ENGINE)
+    Base.metadata.create_all(engine)
