@@ -2,7 +2,7 @@ import json
 import pytest
 
 from falcon import testing
-from models import *
+from .models import *
 from contacts.app import api
 from sqlalchemy.orm import sessionmaker
 

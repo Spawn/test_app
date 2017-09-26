@@ -1,4 +1,4 @@
-from controllers import ContactList, ContactCRUD
+from .controllers import ContactList, ContactCRUD
 import falcon
 
 api = application = falcon.API()

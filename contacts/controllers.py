@@ -3,8 +3,8 @@ import falcon
 
 from marshmallow import ValidationError
 
-from models import Contact
-from serializers import ContactSerializer
+from .models import Contact
+from .serializers import ContactSerializer
 from make_engine import DBSession
 
 

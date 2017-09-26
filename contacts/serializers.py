@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields, post_load
 
-from models import Contact
+from .models import Contact
 
 
 class ContactSerializer(Schema):
