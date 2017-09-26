@@ -18,8 +18,8 @@ class BaseContactController(object):
     @staticmethod
     def response_404(resp):
         resp.body = json.dumps({
-            "status": "Object does not"
-                      " exist or id is incorrect"
+            "status": "Object does not "
+                      "exist or id is incorrect"
         })
         resp.status = falcon.HTTP_404
 
@@ -69,7 +69,7 @@ class ContactCRUD(BaseContactController):
         contact = serialized.data
         session.add(contact)
         session.commit()
-        resp.body = json.dumps({"status": "201 Created"})
+        resp.body = json.dumps(contact.as_dict())
         resp.status = falcon.HTTP_201
 
     def on_put(self, req, resp, contact_id=None):

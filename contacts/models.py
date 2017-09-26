@@ -1,7 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, create_engine
 
-from settings import SQLITE_DB_PATH
+import settings
 
 Base = declarative_base()
 
@@ -28,5 +28,5 @@ class Contact(Base):
                 for c in self.__table__.columns}
 
 if __name__ == "__main__":
-    engine = create_engine(SQLITE_DB_PATH)
+    engine = create_engine(settings.SQLITE_DB_PATH)
     Base.metadata.create_all(engine)
