@@ -1,9 +1,12 @@
 from marshmallow import Schema, fields, post_load
 
-from api.models import Contact
+from models import Contact
 
 
 class ContactSerializer(Schema):
+    """
+    Class for serialize and deserialize contact data
+    """
 
     first_name = fields.String(required=True)
     last_name = fields.String(required=True)

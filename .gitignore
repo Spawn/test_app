@@ -1,3 +1,5 @@
 .env/
 .idea/
 api/test_app.db
+/contacts/.cache/
+/test_app.db
